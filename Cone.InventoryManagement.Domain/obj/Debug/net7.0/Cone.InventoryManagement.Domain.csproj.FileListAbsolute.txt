@@ -1,0 +1,12 @@
+D:\Work\GitRepository1\darzeeshan\Cone.InventoryManagement\Cone.InventoryManagement.Domain\bin\Debug\net7.0\Cone.InventoryManagement.Domain.deps.json
+D:\Work\GitRepository1\darzeeshan\Cone.InventoryManagement\Cone.InventoryManagement.Domain\bin\Debug\net7.0\Cone.InventoryManagement.Domain.dll
+D:\Work\GitRepository1\darzeeshan\Cone.InventoryManagement\Cone.InventoryManagement.Domain\bin\Debug\net7.0\Cone.InventoryManagement.Domain.pdb
+D:\Work\GitRepository1\darzeeshan\Cone.InventoryManagement\Cone.InventoryManagement.Domain\obj\Debug\net7.0\Cone.InventoryManagement.Domain.csproj.AssemblyReference.cache
+D:\Work\GitRepository1\darzeeshan\Cone.InventoryManagement\Cone.InventoryManagement.Domain\obj\Debug\net7.0\Cone.InventoryManagement.Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\Work\GitRepository1\darzeeshan\Cone.InventoryManagement\Cone.InventoryManagement.Domain\obj\Debug\net7.0\Cone.InventoryManagement.Domain.AssemblyInfoInputs.cache
+D:\Work\GitRepository1\darzeeshan\Cone.InventoryManagement\Cone.InventoryManagement.Domain\obj\Debug\net7.0\Cone.InventoryManagement.Domain.AssemblyInfo.cs
+D:\Work\GitRepository1\darzeeshan\Cone.InventoryManagement\Cone.InventoryManagement.Domain\obj\Debug\net7.0\Cone.InventoryManagement.Domain.csproj.CoreCompileInputs.cache
+D:\Work\GitRepository1\darzeeshan\Cone.InventoryManagement\Cone.InventoryManagement.Domain\obj\Debug\net7.0\Cone.InventoryManagement.Domain.dll
+D:\Work\GitRepository1\darzeeshan\Cone.InventoryManagement\Cone.InventoryManagement.Domain\obj\Debug\net7.0\refint\Cone.InventoryManagement.Domain.dll
+D:\Work\GitRepository1\darzeeshan\Cone.InventoryManagement\Cone.InventoryManagement.Domain\obj\Debug\net7.0\Cone.InventoryManagement.Domain.pdb
+D:\Work\GitRepository1\darzeeshan\Cone.InventoryManagement\Cone.InventoryManagement.Domain\obj\Debug\net7.0\ref\Cone.InventoryManagement.Domain.dll

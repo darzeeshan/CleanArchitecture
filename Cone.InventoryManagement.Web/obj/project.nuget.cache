@@ -1,0 +1,21 @@
+{
+  "version": 2,
+  "dgSpecHash": "cbKFdri4ydIF8ayjiD8CD4kggIAeQZe6On/qRWsUosqpB91P9uJbnB61ScIQXGjQ1yyceV/Az2h7c1FYsvc57w==",
+  "success": true,
+  "projectFilePath": "D:\\Work\\GitRepository1\\darzeeshan\\CleanArchitecture_PublicRepository\\Cone.InventoryManagement.Web\\Cone.InventoryManagement.Web.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\zeeshan.dar\\.nuget\\packages\\automapper\\12.0.0\\automapper.12.0.0.nupkg.sha512",
+    "C:\\Users\\zeeshan.dar\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.0\\automapper.extensions.microsoft.dependencyinjection.12.0.0.nupkg.sha512",
+    "C:\\Users\\zeeshan.dar\\.nuget\\packages\\localstorage\\2.1.0\\localstorage.2.1.0.nupkg.sha512",
+    "C:\\Users\\zeeshan.dar\\.nuget\\packages\\microsoft.aspnetcore.jsonpatch\\6.0.10\\microsoft.aspnetcore.jsonpatch.6.0.10.nupkg.sha512",
+    "C:\\Users\\zeeshan.dar\\.nuget\\packages\\microsoft.aspnetcore.mvc.newtonsoftjson\\6.0.10\\microsoft.aspnetcore.mvc.newtonsoftjson.6.0.10.nupkg.sha512",
+    "C:\\Users\\zeeshan.dar\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
+    "C:\\Users\\zeeshan.dar\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\6.0.0\\microsoft.extensions.dependencyinjection.abstractions.6.0.0.nupkg.sha512",
+    "C:\\Users\\zeeshan.dar\\.nuget\\packages\\microsoft.extensions.options\\6.0.0\\microsoft.extensions.options.6.0.0.nupkg.sha512",
+    "C:\\Users\\zeeshan.dar\\.nuget\\packages\\microsoft.extensions.primitives\\6.0.0\\microsoft.extensions.primitives.6.0.0.nupkg.sha512",
+    "C:\\Users\\zeeshan.dar\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
+    "C:\\Users\\zeeshan.dar\\.nuget\\packages\\newtonsoft.json.bson\\1.0.2\\newtonsoft.json.bson.1.0.2.nupkg.sha512",
+    "C:\\Users\\zeeshan.dar\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

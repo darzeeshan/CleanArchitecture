@@ -1,0 +1,66 @@
+﻿@*@using static Cone.InventoryManagement.Web.Contracts.Infrastructure.DataTypes.EnumDataTypes
+@model IEnumerable<Cone.InventoryManagement.Web.Models.Clients.ClientConnectionForSpecificSetupVM>
+@{
+    string Navigation = "<li class='breadcrumb-item'><a href='/ClientSetup/Index'>Accounts</a></li>";
+    Navigation += "<li class='breadcrumb-item'><a href='/ClientSetup/Detail/xxxx'>Account Overview</a></li>";
+    Navigation += "<li class='breadcrumb-item active'>Connections</li>";
+
+    ViewData["Navigation"] = Navigation;
+    ViewData["PageTitle"] = "Connections";
+    ViewData["PageHeading"] = "Connections";
+}
+
+<div class="d-flex justify-content-center">
+    <div class="col-12">
+        <!-- Default box -->
+        <div class="card">
+
+            <!-- /.card-header -->
+            <div class="card-body">
+                <table id="frmtable" class="table">
+                    <thead>
+                        <tr>
+                            <th width="8%">Type</th>
+                            <th width="62%">Connection Details</th>
+                            <th width="15%">Updated On</th>
+                            <th width="15%">Creation Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach(var item in Model)
+                        {
+                        <tr>
+                            <td>@((bytConnectionTypes)item.ConnectionType)</td>
+                            <td>
+                                @{
+                                    if (item.ConnectionType == 1)
+                                    { 
+                                        <small class="font-weight-bold">KEY:</small> @item.Key
+                                    }
+                                    else if (item.ConnectionType == 2)
+                                    {
+                                        <small class="font-weight-bold">USER NAME:</small> @item.Username<br />
+                                        <small class="font-weight-bold">PASSWORD:</small> @item.Password
+                                    }
+                                    else if (item.ConnectionType == 3)
+                                    {
+                                        <small class="font-weight-bold">ADDRESS:</small> @item.Username<br />
+                                        <small class="font-weight-bold">USER NAME:</small> @item.Username<br />
+                                        <small class="font-weight-bold">PASSWORD:</small> @item.Password<br />
+                                        <small class="font-weight-bold">PORT:</small> @item.Port<br />
+                                    }
+                                }
+                            </td>
+                            <td>@item.LastUpdated</td>
+                            <td>@item.DateTime</td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+                
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+    </div>
+</div>*@

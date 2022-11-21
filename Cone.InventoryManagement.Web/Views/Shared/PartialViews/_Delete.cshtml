@@ -1,0 +1,12 @@
+﻿@using Cone.InventoryManagement.Web.Contracts.Infrastructure.Functions
+<div id="DeleteConfirmationAlert" class="invisible">
+    <div class="alert alert-danger alert-dismissible">
+        <button type="button" name="CancelDeleteConfirmationButton" class="close" aria-hidden="true">&times;</button>
+        <h3><i class="icon fas fa-ban"></i> Alert!</h3>
+        <h5 class='ml-4'>@Html.Raw(Messages.Info(6))</h5>
+        <h6 class='ml-4'>@Html.Raw(Messages.Info(7))</h6>
+        <div class="col-2 ml-2 mt-4">
+            <button type="submit" class="btn btn-block btn-default">Yes</button>
+        </div>
+    </div>
+</div>

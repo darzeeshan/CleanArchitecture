@@ -1,0 +1,63 @@
+﻿@using Cone.InventoryManagement.Web.Contracts.Infrastructure.Functions
+@{
+    //Header
+    string Navigation = "<li class='breadcrumb-item active'>Error</li>";
+
+    byte Info1 = 0;
+    byte Info2 = 0;
+    string Code = "";
+    string Message1 = "";
+
+    if (TempData.ContainsKey("Errors"))
+    {
+        //TempData values format: 
+        //Numeric|Numeric|string|string|string|string
+        //Convert.ToByte(result.MessageCode) + "|0|" + result.StatusCode + "|" + result.Message + "||"
+
+        //if (Id <= 0)
+        //{
+        //    TempData["Errors"] = "11|4||||";
+
+        //    return RedirectToAction("Error", "Dashboard");
+        //}
+
+        string[] error = TempData["Errors"].ToString().Split("|");
+
+        Info1 = Convert.ToByte(error[0]);
+        Info2 = Convert.ToByte(error[1]);
+        Code = error[2];
+        Message1 = error[3];
+    }
+
+    ViewData["Navigation"] = Navigation;
+    ViewData["PageTitle"] = Code +" Error";
+    ViewData["PageHeading"] = Code +" Error";
+}
+<section class="content">
+    <div class="error-page">
+        <h2 class="headline text-danger font-weight-bold">@Code</h2>
+
+        <div class="error-content">
+            <h3 class="font-weight-bold"><i class="fas fa-exclamation-triangle text-danger"></i> @Message1 @Messages.Info(Info2)</h3>
+            <h4>
+                @Messages.Info(Info1)
+            </h4>
+            <h6 class="mt-3">[TimeStamp: @DateTime.Now]</h6>
+            @if (Info2 == 4)
+            {
+                <h5 class="mt-4 font-weight-bold">The error could be one or more of following reasons:</h5>
+                <div>
+                    <ul>
+                        <li>User is not authorized to perform certain actions on this record</li>
+                        <li>Record identification number is invalid</li>
+                        <li>Record status is changed and is inaccessible</li>
+                        <li>System encountered an unexpected result during processing</li>
+                    </ul>
+                </div>
+            }
+
+            <h3 class="mt-5">Go to <a href="/Dashboard/Index">Dashboard</a></h3>
+        </div>
+    </div>
+    <!-- /.error-page -->
+</section>

@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "Cone.InventoryManagement.Application": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:54406;http://localhost:54407"
+    }
+  }
+}

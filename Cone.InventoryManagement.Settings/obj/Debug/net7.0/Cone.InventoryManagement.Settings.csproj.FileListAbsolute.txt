@@ -1,0 +1,13 @@
+D:\Work\GitRepository1\darzeeshan\Cone.InventoryManagement\Cone.InventoryManagement.Settings\bin\Debug\net7.0\Settings\clientfilestorage.json
+D:\Work\GitRepository1\darzeeshan\Cone.InventoryManagement\Cone.InventoryManagement.Settings\bin\Debug\net7.0\Cone.InventoryManagement.Settings.deps.json
+D:\Work\GitRepository1\darzeeshan\Cone.InventoryManagement\Cone.InventoryManagement.Settings\bin\Debug\net7.0\Cone.InventoryManagement.Settings.dll
+D:\Work\GitRepository1\darzeeshan\Cone.InventoryManagement\Cone.InventoryManagement.Settings\bin\Debug\net7.0\Cone.InventoryManagement.Settings.pdb
+D:\Work\GitRepository1\darzeeshan\Cone.InventoryManagement\Cone.InventoryManagement.Settings\obj\Debug\net7.0\Cone.InventoryManagement.Settings.csproj.AssemblyReference.cache
+D:\Work\GitRepository1\darzeeshan\Cone.InventoryManagement\Cone.InventoryManagement.Settings\obj\Debug\net7.0\Cone.InventoryManagement.Settings.GeneratedMSBuildEditorConfig.editorconfig
+D:\Work\GitRepository1\darzeeshan\Cone.InventoryManagement\Cone.InventoryManagement.Settings\obj\Debug\net7.0\Cone.InventoryManagement.Settings.AssemblyInfoInputs.cache
+D:\Work\GitRepository1\darzeeshan\Cone.InventoryManagement\Cone.InventoryManagement.Settings\obj\Debug\net7.0\Cone.InventoryManagement.Settings.AssemblyInfo.cs
+D:\Work\GitRepository1\darzeeshan\Cone.InventoryManagement\Cone.InventoryManagement.Settings\obj\Debug\net7.0\Cone.InventoryManagement.Settings.csproj.CoreCompileInputs.cache
+D:\Work\GitRepository1\darzeeshan\Cone.InventoryManagement\Cone.InventoryManagement.Settings\obj\Debug\net7.0\Cone.InventoryManagement.Settings.dll
+D:\Work\GitRepository1\darzeeshan\Cone.InventoryManagement\Cone.InventoryManagement.Settings\obj\Debug\net7.0\refint\Cone.InventoryManagement.Settings.dll
+D:\Work\GitRepository1\darzeeshan\Cone.InventoryManagement\Cone.InventoryManagement.Settings\obj\Debug\net7.0\Cone.InventoryManagement.Settings.pdb
+D:\Work\GitRepository1\darzeeshan\Cone.InventoryManagement\Cone.InventoryManagement.Settings\obj\Debug\net7.0\ref\Cone.InventoryManagement.Settings.dll

@@ -1,0 +1,263 @@
+﻿@using Cone.InventoryManagement.Web.Models.Misc
+@using static Cone.InventoryManagement.Web.Contracts.Infrastructure.DataTypes.EnumDataTypes
+@model Cone.InventoryManagement.Web.Models.Clients.RougeClientConnectionCreateVM
+@{
+    //Header
+    string Navigation = "<li class='breadcrumb-item'><a href='/ClientSetup/Index'>Accounts</a></li>";
+    Navigation += "<li class='breadcrumb-item'><a href='/ClientSetup/Detail/"+ Model.SetupId +"'>"+ Model.ClientName +"</a></li>";
+    Navigation += "<li class='breadcrumb-item active'>Create Connection</li>";
+
+    ViewData["Navigation"] = Navigation;
+    ViewData["PageTitle"] = "New Connection for " + Model.ClientName;
+    ViewData["PageHeading"] = "New Connection for "+ Model.ClientName;
+
+    //Data
+    byte ConnectionType = Model.ConnectionType;
+    string ConnectionTypeKey = "";
+    string ConnectionTypeJwt = "";
+    string ConnectionTypeFtp = "";
+
+
+
+    if (ConnectionType == 1)
+        ConnectionTypeKey = "checked";
+    else if (ConnectionType == 2)
+        ConnectionTypeJwt = "checked";
+    else 
+        ConnectionTypeFtp = "checked";
+
+    //Handle data validation errors returned from API
+    Alert alert = new Alert();
+
+    if (ViewData["Alert"] != null)
+    {
+        alert = ViewData["Alert"] as Alert;
+    }
+}
+<div class="d-flex justify-content-center">
+    <div class="col-5">
+        <!-- jquery validation -->
+        <div class="card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">@Model.ClientName</h3>
+            </div>
+            <!-- /.card-header -->
+            <!-- form start -->
+            <form asp-controller="ClientConnection" asp-action="Create" method="Post" id="frmConnection" autocomplete="off">
+                <input type="hidden" asp-for="SetupId" />
+                <input type="hidden" asp-for="ClientId" />
+                <input type="hidden" asp-for="ClientName" />
+                @Html.AntiForgeryToken()
+                <div class="card-body">
+                    @await Component.InvokeAsync("Alert", alert)
+                    <table width="100%" cellpadding="3" class="frm-table" border="1">
+                        <tr>
+                            <td>
+                                <div class="form-group clearfix mt-3">
+                                    <div class="icheck-primary d-inline">
+                                        <input type="radio" id="ConnectionTypeKey" title="ConnectionTypeKeyAttribute" name="ConnectionType" value="1" @ConnectionTypeKey>
+                                        <label for="ConnectionTypeKey">
+                                            @((bytConnectionTypes)1)
+                                        </label>
+                                    </div>
+                                    <div class="icheck-primary d-inline ml-3">
+                                        <input type="radio" id="ConnectionTypeJwt" title="ConnectionTypeJwtAttribute" name="ConnectionType" value="2" @ConnectionTypeJwt>
+                                        <label for="ConnectionTypeJwt">
+                                            @((bytConnectionTypes)2)
+                                        </label>
+                                    </div>
+                                    <div class="icheck-primary d-inline ml-3">
+                                        <input type="radio" id="ConnectionTypeFtp" title="ConnectionTypeFtpAttribute" name="ConnectionType" value="3" @ConnectionTypeFtp>
+                                        <label for="ConnectionTypeFtp">
+                                            @((bytConnectionTypes)3)
+                                        </label>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div id="ConnectionTypeKeyAttribute">
+                                    <table width="100%" cellpadding="3" class="frm-table" border="0">
+                                        <tr>
+                                            <td>
+                                                <div class="form-group">
+                                                    <label for="txtKey">Key</label>
+                                                    <input type="text" class="form-control" asp-for="txtKey" placeholder="Key" maxlength="100">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+
+                                <div id="ConnectionTypeJwtAttribute">
+                                    <table width="100%" cellpadding="3" class="frm-table" border="0">
+                                        <tr>
+                                            <td colspan="2">
+                                                <div class="form-group">
+                                                    <label for="txtJwtBaseUrl">Base Url</label>
+                                                    <input type="text" class="form-control" asp-for="txtJwtBaseUrl" placeholder="Base Url" maxlength="100">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="form-group">
+                                                    <label for="txtJwtUser">User Name</label>
+                                                    <input type="text" class="form-control" asp-for="txtJwtUser" placeholder="User Name" maxlength="20">
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="form-group">
+                                                    <label for="txtJwtPassword">Password</label>
+                                                    <input type="text" class="form-control" asp-for="txtJwtPassword" placeholder="Password" maxlength="20">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+
+                                <div id="ConnectionTypeFtpAttribute">
+                                    <table width="100%" cellpadding="3" class="frm-table" border="0">
+                                        <tr>
+                                            <td colspan="2">
+                                                <div class="form-group">
+                                                    <label for="txtFtpUrl">FTP Url</label>
+                                                    <input type="text" class="form-control" asp-for="txtFtpUrl" placeholder="FTP Url" maxlength="100">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="form-group">
+                                                    <label for="txtFtpUser">User Name</label>
+                                                    <input type="text" class="form-control" asp-for="txtFtpUser" placeholder="User Name" maxlength="20">
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="form-group">
+                                                    <label for="txtFtpPassword">Password</label>
+                                                    <input type="text" class="form-control" asp-for="txtFtpPassword" placeholder="Password" maxlength="20">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2">
+                                                <div class="form-group w-25">
+                                                    <label for="txtFtpPort">Port</label>
+                                                    <input type="text" class="form-control" asp-for="txtFtpPort" placeholder="FTP Port" maxlength="5" size="5">
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                    </table>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="form-group clearfix mt-3">
+                                    <div class="icheck-success d-inline">
+                                        <input type="radio" id="CommunicationTypeInbound" title="CommunicationTypeInboundAttribute" name="CommunicationType" value="1" checked>
+                                        <label for="CommunicationTypeInbound">
+                                            Inbound
+                                        </label>
+                                    </div>
+                                    <div class="icheck-success d-inline ml-3">
+                                        <input type="radio" id="CommunicationTypeOutbound" title="CommunicationTypeOutboundAttribute" name="CommunicationType" value="2">
+                                        <label for="CommunicationTypeOutbound">
+                                            Outbound
+                                        </label>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div id="CommunicationTypeInboundAttribute">
+                                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                                        <label class="btn bg-olive active">
+                                            <input type="radio" name="FileType" id="FileTypeInboundExcel" value="1" autocomplete="off" checked> Excel / CSV
+                                        </label>
+                                        <label class="btn bg-olive">
+                                            <input type="radio" name="FileType" id="FileTypeInboundXml" value="2" autocomplete="off"> XML
+                                        </label>
+                                        <label class="btn bg-olive">
+                                            <input type="radio" name="FileType" id="FileTypeInboundEdi850" value="3" autocomplete="off"> EDI 850
+                                        </label>
+                                    </div>
+                                </div>
+                                <div id="CommunicationTypeOutboundAttribute">
+                                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                                        <label class="btn bg-olive active">
+                                            <input type="radio" name="FileType" id="FileTypeOutboundExcel" value="11" autocomplete="off" checked> Excel / CSV
+                                        </label>
+                                        <label class="btn bg-olive">
+                                            <input type="radio" name="FileType" id="FileTypeOutboundXml" value="12" autocomplete="off"> XML
+                                        </label>
+                                        <label class="btn bg-olive">
+                                            <input type="radio" name="FileType" id="FileTypeOutboundEdi214" value="13" autocomplete="off"> EDI 214
+                                        </label>
+                                        <label class="btn bg-olive">
+                                            <input type="radio" name="FileType" id="FileTypeOutboundEdi210" value="14" autocomplete="off"> EDI 210
+                                        </label>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+
+                    </table>
+                </div>
+                <!-- /.card-body -->
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
+        <!-- /.card -->
+    </div>
+    <!--/column  -->
+</div>
+
+
+@section Header{
+    <!-- iCheck for checkboxes and radio inputs -->
+    <link rel="stylesheet" href="/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+}
+
+@section Footer{
+    <!-- jquery-validation -->
+    <script src="/plugins/jquery-validation/jquery.validate.min.js"></script>
+    <script src="/plugins/jquery-validation/additional-methods.min.js"></script>
+    <script src="/dist/js/cone-validation.js"></script>
+
+    <script>
+        $(function(){
+            $('input:radio[name="ConnectionType"]').click(function () {
+                $.fn.frmConnection();
+            });
+            $('input:radio[name="CommunicationType"]').click(function () {
+                $.fn.frmConnection();
+            });
+            $.fn.frmConnection = function()
+            {
+                $("#ConnectionTypeKeyAttribute").hide();
+                $("#ConnectionTypeJwtAttribute").hide();
+                $("#ConnectionTypeFtpAttribute").hide();
+                $("#CommunicationTypeInboundAttribute").hide();
+                $("#CommunicationTypeOutboundAttribute").hide();
+
+                $('input:radio[name="ConnectionType"]:checked').each(function () {
+                    var title = this.title;
+                    $("#" + title).show();
+                });
+
+                $('input:radio[name="CommunicationType"]:checked').each(function () {
+                    var title = this.title;
+                    $("#" + title).show();
+                });
+            }
+            $.fn.frmConnection();
+        });
+    </script>
+}

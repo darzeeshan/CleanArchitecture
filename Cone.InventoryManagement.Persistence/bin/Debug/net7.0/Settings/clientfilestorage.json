@@ -1,0 +1,26 @@
+//Environment Variable: Cone.InventoryManagement.Settings
+//Variable Value: D:\Work\.........\Cone.InventoryManagement.Settings\ 
+
+{
+  "ProjectsPhysicalLocation": {
+    "Settings": "<environment variable>"
+  },
+  "AssetsPhysicalLocation": {
+    "Storage": "E:\\wwwinternal\\GitHub\\darzeeshan\\Cone.InventoryManagement\\Cone.InventoryManagement.Storage",
+    "Log": "E:\\wwwinternal\\GitHub\\darzeeshan\\Cone.InventoryManagement\\Cone.InventoryManagement.Log"
+  },
+  "ClientsFileStorage": {
+    "Clients": {
+      "Root": "\\Clients"
+    },
+    "Shipment850": {
+      "Step1": "\\Shipments\\Step1-ClientFiles",
+      "Step2Ok": "\\Shipments\\Step2-Structure\\Ok",
+      "Step2Bad": "\\Shipments\\Step2-Structure\\Bad",
+      "Step3Ok": "\\Shipments\\Step3-DataValid\\Ok",
+      "Step3Bad": "\\Shipments\\Step3-DataValid\\Bad",
+      "Step4Ok": "\\Shipments\\Step4-JsonValid\\Ok",
+      "Step4Bad": "\\Shipments\\Step4-JsonValid\\Bad"
+    }
+  }
+}

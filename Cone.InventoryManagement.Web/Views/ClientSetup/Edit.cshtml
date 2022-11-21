@@ -1,0 +1,134 @@
+﻿@using Cone.InventoryManagement.Web.Models.Misc
+@model Cone.InventoryManagement.Web.Models.Clients.ClientSetupEditVM
+@{
+    //Header
+    string Navigation = "<li class='breadcrumb-item'><a href='/ClientSetup/Index'>Accounts</a></li>";
+    Navigation += "<li class='breadcrumb-item active'>Edit Account</li>";
+
+    ViewData["Navigation"] = Navigation;
+    ViewData["PageTitle"] = "Edit Account";
+    ViewData["PageHeading"] = "Edit Account";
+
+    //Data
+    byte Status = 1;
+    string StatusActive = "";
+    string StatusInactive = "";
+
+
+    if (Model != null)
+        Status = Model.Status;
+
+    if (Status == 1)
+        StatusActive = "checked";
+    else
+        StatusInactive = "checked";
+    
+    //Handle data validation errors returned from API
+    Alert alert = new Alert();
+
+    if (ViewData["Alert"] != null)
+    {
+        alert = ViewData["Alert"] as Alert;
+    }
+}
+
+<div class="d-flex justify-content-center">
+    <div class="col-5">
+        <!-- jquery validation -->
+        <div class="card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">Edit Account</h3>
+            </div>
+            <!-- /.card-header -->
+            <!-- form start -->
+            <form asp-controller="ClientSetup" asp-action="Edit" method="Post" id="frmClients" autocomplete="off">
+                <input type="hidden" asp-for="SetupId" />
+                @Html.AntiForgeryToken()
+                <div class="card-body">
+                    @await Component.InvokeAsync("Alert", alert)
+                    <table width="100%" cellpadding="3" class="frm-table" border="0">
+                        <tr>
+                            <td>
+                                <div class="form-group">
+                                    <label for="ClientName">Client Name</label>
+                                    <input type="text" class="form-control" asp-for="ClientName" placeholder="Client Name" maxlength="100">
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-group">
+                                    <label for="ClientId">Account Number</label>
+                                    <input type="text" class="form-control" asp-for="ClientId" placeholder="Account Number" maxlength="15">
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <div class="form-group">
+                                    <label for="FolderLocation">Folder Name (readonly)</label>
+                                    <input type="text" class="form-control" asp-for="FolderLocation" placeholder="Folder Name" maxlength="30" readonly="readonly">
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <div class="form-group clearfix mt-3">
+                                    <div class="icheck-primary d-inline">
+                                        <input type="radio" id="StatusActive" name="Status" value="1" @StatusActive>
+                                        <label for="StatusActive">
+                                            Active
+                                        </label>
+                                    </div>
+                                    <div class="icheck-danger d-inline ml-3">
+                                        <input type="radio" id="StatusInactive" name="Status" value="2" @StatusInactive>
+                                        <label for="StatusInactive">
+                                            Inactive
+                                        </label>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <!-- /.card-body -->
+                <div class="card-footer">
+                    <div class="col-3 float-left">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                    <div class="float-right">
+                        <button type="button" name="DeleteConfirmationButton" class="btn btn-danger">DELETE</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <form asp-controller="ClientSetup" asp-action="Delete" method="Post">
+            <input type="hidden" asp-for="SetupId" />
+            @Html.AntiForgeryToken()
+            <partial name="~/Views/Shared/PartialViews/_Delete.cshtml" />
+        </form>
+        <!-- /.card -->
+    </div>
+    <!--/column  -->
+</div>
+@section Header{
+    <!-- iCheck for checkboxes and radio inputs -->
+    <link rel="stylesheet" href="/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+}
+@section Footer{
+    <!-- jquery-validation -->
+    <script src="/plugins/jquery-validation/jquery.validate.min.js"></script>
+    <script src="/plugins/jquery-validation/additional-methods.min.js"></script>
+    <script src="/dist/js/cone-validation.js"></script>
+
+    <script>
+        $(function () {
+            $('button[name="DeleteConfirmationButton"]').click(function () {
+                $('#DeleteConfirmationAlert').addClass('visible').removeClass('invisible');
+                $('button[name="DeleteConfirmationButton').addClass('invisible').removeClass('visible');
+            });
+            $('button[name="CancelDeleteConfirmationButton"]').click(function () {
+                $('#DeleteConfirmationAlert').addClass('invisible').removeClass('visible');
+                $('button[name="DeleteConfirmationButton').addClass('visible').removeClass('invisible');
+            });
+        });
+    </script>
+}

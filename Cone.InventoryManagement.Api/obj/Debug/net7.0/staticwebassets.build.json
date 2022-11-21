@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "uqtHLB/RdCwinwOdUc7rDKTtTBdLqGq4SsSuOGOLEtw=",
+  "Source": "Cone.InventoryManagement.Api",
+  "BasePath": "_content/Cone.InventoryManagement.Api",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

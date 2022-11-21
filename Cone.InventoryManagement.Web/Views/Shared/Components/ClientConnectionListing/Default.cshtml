@@ -1,0 +1,51 @@
+﻿@using static Cone.InventoryManagement.Web.Contracts.Infrastructure.DataTypes.EnumDataTypes
+@model IEnumerable<Cone.InventoryManagement.Web.Models.Clients.ClientConnectionForSpecificSetupVM>
+
+@{
+    if (Model.Count() > 0)
+    {
+    <table id="frmtable" class="table">
+        <thead>
+            <tr>
+                <th class="text-center" width="5%">Edit</th>
+                <th width="8%">Type</th>
+                <th width="12%">Updated On</th>
+                <th width="15%">Creation Date</th>
+                <th width="45%">Connection Details</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var item in Model)
+            { 
+            <tr>
+                <td align="center"><a href="/ClientConnection/Edit/@item.ConnectionId" title="Edit"><span class="fa-regular fa-pen-to-square fa-lg"></span></a></td>
+                <td>@((bytConnectionTypes)item.ConnectionType)</td>
+                <td>@item.LastUpdated</td>
+                <td>@item.DateTime</td>
+                <td>
+                    @{
+                        if (item.ConnectionType == 1)
+                        { 
+                            <small class="font-weight-bold">KEY:</small> @item.Key
+                        }
+                        else if (item.ConnectionType == 2)
+                        {
+                            <small class="font-weight-bold">TOKEN URL:</small> @item.Key<br />
+                            <small class="font-weight-bold">USER NAME:</small> @item.Username<br />
+                            <small class="font-weight-bold">PASSWORD:</small> @item.Password
+                        }
+                        else if (item.ConnectionType == 3)
+                        {
+                            <small class="font-weight-bold">URL:</small> @item.Key<br />
+                            <small class="font-weight-bold">USER NAME:</small> @item.Username<br />
+                            <small class="font-weight-bold">PASSWORD:</small> @item.Password<br />
+                            <small class="font-weight-bold">PORT:</small> @item.Port<br />
+                        }
+                    }
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+    }
+}

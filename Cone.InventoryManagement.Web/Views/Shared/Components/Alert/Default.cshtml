@@ -1,0 +1,54 @@
+﻿@using Cone.InventoryManagement.Web.Contracts.Infrastructure.Functions
+@model Cone.InventoryManagement.Web.Models.Misc.Alert
+@{
+    byte MessageType = Model.MessageType;
+    byte Info = Model.Info;
+    List<string> Errors = Model.Errors;
+    //byte.TryParse(Model.Info, out Info);
+}
+@if (Info > 0)
+{
+    <div class="row">
+        <div class="col-md">
+        @if (MessageType == 1)
+        {
+            <div class="alert alert-danger alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <h5 class="font-weight-bold">@Messages.Info(Info)</h5>
+            </div>
+        }
+        @if (MessageType == 2)
+        {
+            <div class="alert alert-info alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <h5 class="font-weight-bold">@Messages.Info(Info)</h5>
+            </div>
+        }
+        @if (MessageType == 3)
+        {
+            <div class="alert alert-warning alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <h5 class="font-weight-bold">@Messages.Info(Info)</h5>
+                @{
+                    if (Errors != null)
+                    {
+                        Html.Raw("<ul>");
+                        foreach (var err in Errors)
+                        {
+                            <li>@err</li>
+                        }
+                        Html.Raw("</ul>");
+                    }
+                }
+            </div>
+        }
+        @if (MessageType == 4)
+        {
+            <div class="alert alert-success alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <h5 class="font-weight-bold">@Messages.Info(Info)</h5>
+            </div>
+        }
+        </div>
+    </div>
+}

@@ -1,0 +1,106 @@
+﻿@using Cone.InventoryManagement.Web.Models.Misc
+@model Cone.InventoryManagement.Web.Models.Clients.BaseClientSetupVM
+@{
+    //Header
+    string Navigation = "<li class='breadcrumb-item'><a href='/ClientSetup/Index'>Accounts</a></li>";
+    Navigation += "<li class='breadcrumb-item active'>Add New Account</li>";
+
+    ViewData["Navigation"] = Navigation;
+    ViewData["PageTitle"] = "Add New Account";
+    ViewData["PageHeading"] = "Add New Account";
+
+    //Data
+    byte Status = 1;
+    string StatusActive = "";
+    string StatusInactive = "";
+
+    if (Model != null)
+        Status = Model.Status;
+
+    if (Status == 1)
+        StatusActive = "checked";
+    else
+        StatusInactive = "checked";
+    
+    //Handle data validation errors returned from API
+    Alert alert = new Alert();
+
+    if (ViewData["Alert"] != null)
+    {
+        alert = ViewData["Alert"] as Alert;
+    }
+}
+
+<div class="d-flex justify-content-center">
+    <div class="col-5">
+        <!-- jquery validation -->
+        <div class="card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">Add New Account</h3>
+            </div>
+            <!-- /.card-header -->
+            <!-- form start -->
+            <form asp-controller="ClientSetup" asp-action="Create" method="Post" id="frmClients" autocomplete="off">
+                @Html.AntiForgeryToken()
+                <div class="card-body">
+                    @await Component.InvokeAsync("Alert", alert)
+                    <table width="100%" cellpadding="3" class="frm-table" border="0">
+                        <tr>
+                            <td>
+                                <div class="form-group">
+                                    <label for="ClientName">Client Name</label>
+                                    <input type="text" class="form-control" asp-for="ClientName" placeholder="Client Name" maxlength="100">
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-group">
+                                    <label for="ClientId">Account Number</label>
+                                    <input type="text" class="form-control" asp-for="ClientId" placeholder="Account Number" maxlength="15">
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <div class="form-group">
+                                    <label for="FolderLocation">Folder Name</label>
+                                    <input type="text" class="form-control" asp-for="FolderLocation" placeholder="Folder Name" maxlength="30">
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <!-- /.card-body -->
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
+        <!-- /.card -->
+
+        <h5 class="mt-4 font-weight-bold">Note:</h5>
+        <div>
+            <ul>
+                <li>There should be no spaces and special characters in folder name</li>
+                <li>Client folder name must be unique and should not already exist</li>
+                <li>User must have write permissions on the drive, otherwise folders will not be created</li>
+                <li>System automatically creates sub folders defined in system settings file</li>
+                <li>System will automatically convert folder name uppercase characters into lowercase</li>
+                <li>Folder name can not be edited in page Edit mode</li>
+            </ul>
+        </div>
+    </div>
+    <!--/column  -->
+</div>
+
+
+@section Header{
+    <!-- iCheck for checkboxes and radio inputs -->
+    <link rel="stylesheet" href="/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+}
+
+@section Footer{
+    <!-- jquery-validation -->
+    <script src="/plugins/jquery-validation/jquery.validate.min.js"></script>
+    <script src="/plugins/jquery-validation/additional-methods.min.js"></script>
+    <script src="/dist/js/cone-validation.js"></script>
+}

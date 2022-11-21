@@ -1,0 +1,80 @@
+﻿@using Cone.InventoryManagement.Web.Models.Misc
+@model IEnumerable<Cone.InventoryManagement.Web.Models.Clients.ClientSetupDetailedVM>
+@{
+    string StatusTitle = "";
+    string StatusClass = "";
+
+    string Navigation = "<li class='breadcrumb-item active'>Accounts</li>";
+
+    ViewData["Navigation"] = Navigation;
+    ViewData["PageTitle"] = "Accounts";
+    ViewData["PageHeading"] = "Accounts";
+
+    //Handle data validation errors returned from API
+    Alert alert = new Alert
+    {
+       Info = Convert.ToByte(Context.Request.Query["Info"])
+    };
+}
+
+<div class="d-flex justify-content-center">
+    <div class="col-12">
+    <!-- Default box -->
+        <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">List of Accounts</h3>
+            <div class="card-tools">
+                <div class="input-group input-group-sm">
+                    <div class="input-group-append">
+                       <button type="button" onclick="javascript:location.href='/ClientSetup/Create'" class="btn btn-block btn-outline-primary btn-flat"><i class="fa-regular fa-plus mr-1"></i> Add New Account</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- /.card-header -->
+        <div class="card-body">
+        @await Component.InvokeAsync("Alert", alert)
+        <table id="frmtable" class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th class="text-center" width="2%">Status</th>
+                    <th class="text-center" width="2%">Edit</th>
+                    <th class="text-center" width="2%">Detail</th>
+                    <th width="12%">Account Number</th>
+                    <th width="67%">Client Name</th>
+                    <th width="22%">Creation Date</th>
+                </tr>
+            </thead>
+            <tbody>
+            @foreach(var item in Model)
+            {
+                if (item.Status == 1)
+                {
+                    StatusTitle = "Active - Click to change status";
+                    StatusClass = "";
+                }
+                else
+                {
+                    StatusTitle = "Inactive - Click to change status";
+                    StatusClass = "text-muted";
+                }
+
+            <tr>
+                <td align="center"><a href="/ClientSetup/Status/@item.SetupId" title="@StatusTitle" class="@StatusClass"><span class="fa-regular fa-share-from-square fa-lg"></span></a></td>
+                <td align="center"><a href="/ClientSetup/Edit/@item.SetupId" title="Edit"><span class="fa-regular fa-pen-to-square fa-lg"></span></a></td>
+                <td align="center"><a href="/ClientSetup/Detail/@item.SetupId" title="View Details"><span class="fa-regular fa-paste fa-lg"></span></a></td>
+                <td>@item.ClientId</td>
+                <td>@item.ClientName</td>
+                <td>@item.DateTime</td>
+            </tr>
+            }
+            </tbody>
+        </table>
+        </div>
+        <!-- /.card-body -->
+    </div>
+    <!-- /.card -->
+    </div>
+</div>

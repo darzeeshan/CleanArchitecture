@@ -1,0 +1,73 @@
+﻿@using Cone.InventoryManagement.Web.Models.Misc
+@using static Cone.InventoryManagement.Web.Contracts.Infrastructure.DataTypes.EnumDataTypes
+@model Cone.InventoryManagement.Web.Models.Clients.ClientSetupDetailedVM
+@{
+    string Navigation = "<li class='breadcrumb-item'><a href='/ClientSetup/Index'>Accounts</a></li>";
+    Navigation += "<li class='breadcrumb-item active'>Account Overview</li>";
+
+    ViewData["Navigation"] = Navigation;
+    ViewData["PageTitle"] = "Account Overview";
+    ViewData["PageHeading"] = "Account Overview";
+
+    //Handle data validation errors returned from API
+    Alert alert = new Alert
+    {
+        Info = Convert.ToByte(Context.Request.Query["Info"])
+    };
+}
+<div class="d-flex justify-content-center">
+    <div class="col-12">
+        <!-- Default box -->
+        <div class="card">
+
+                <!-- Account Setup -->
+                <div class="card-header">
+                    <h3 class="card-title font-weight-bold">@Model.ClientName</h3>
+                </div>
+                <div class="card-body">
+                    @await Component.InvokeAsync("Alert", alert)
+                    <table id="frmtable" class="table">
+                        <thead>
+                            <tr>
+                                <th width="8%">Status</th>
+                                <th width="12%">Account Number</th>
+                                <th width="15%">Creation Date</th>
+                                <th width="65%">Folders</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>@((bytStatuses)Model.Status)</td>
+                                <td>@Model.ClientId</td>
+                                <td>@Model.DateTime</td>
+                            <td>
+                                <small class="font-weight-bold">CLIENT FOLDER:</small> /@Model.FolderLocation/ <br />
+                                <small class="font-weight-bold">DEFAULT PATH:</small> **************** 
+                            </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.card-body -->
+
+                <!-- Connection Setup -->
+                <div class="card-header">
+                    <h3 class="card-title font-weight-bold">Connections</h3>
+                    <div class="card-tools">
+                        <div class="input-group input-group-sm">
+                            <div class="input-group-append">
+                                <button type="button" onclick="javascript:location.href='/ClientConnection/Create/@Model.SetupId'" class="btn btn-block btn-outline-primary btn-flat"><i class="fa-regular fa-plus mr-1"></i> Add Connection</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    @await Component.InvokeAsync("ClientConnectionListing", new{ Id = Model.SetupId })
+                </div>
+                <!-- /.card-body -->
+
+
+        </div>
+        <!-- /.card -->
+    </div>
+</div>
